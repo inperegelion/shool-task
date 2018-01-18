@@ -63,4 +63,3 @@ console.log(sendingMessage);
 res.send(sendingMessage);
 console.log(' \n res status: ', res.status, res.statusText);
 console.log('res.text: ', JSON.parse(res.responseText));
-
