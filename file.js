@@ -59,15 +59,16 @@ let sendingMessage = JSON.stringify({
                         id: task['id'],
                         results: resultArray,
                     });
+// sendingMessage = '{ "id":"' + task['id'] + ',"results":"'+ resultArray.toString() +'"}' // \'
+console.log(JSON.parse(sendingMessage)["results"].toString() === resultArray.toString());
 
-console.log(JSON.parse([sendingMessage]).results.toString == resultArray);
 
 res.setRequestHeader('Content-Type', 'json');
 res.send(sendingMessage);
 
 console.log('res status: ', res.status, res.statusText);
-console.log('res.text: ', res.responseText);
-
+// console.log(typeof JSON.parse(res.responseText));
+console.log('res.text: ', JSON.parse(res.responseText));
 // https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task
 // https://www.eliftech.com/school-task
 
