@@ -3,6 +3,7 @@ let fetch = require("node-fetch")
 
 let a = 0;
 let b = 0;
+let count = 0;
 let i = 0;
 let id = '';
 let resultArray = [];
@@ -27,8 +28,9 @@ function postfixCalc(expression) {
             case '*': // a%b
                 b = stack.pop();
                 a = stack.pop();
-                if (b == 0) { stack.push(42); }
-                else { stack.push(parseInt(a % b)); };
+                if (b == 0) { stack.push(42) }
+                else if (a < 0 || b < 0) { stack.push(parseInt(-1 * (a % b))) }
+                else { stack.push(parseInt(a % b)) };
                 break;
             case '/': // a/b
                 b = stack.pop();
@@ -49,7 +51,7 @@ fetch('https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task')
         return response.json();
     })
     .then(function (task) {
-/*recieved expr*/ console.log(task['expressions']);
+/*recieving body*/ console.log(task['expressions']);
         for (let index = 0; index < task['expressions'].length; index++) {
             resultArray.push(postfixCalc(task['expressions'][index]));
         };
@@ -66,3 +68,6 @@ fetch('https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task')
                 } else { console.log('Hold on, ElifTech School, I almost there') }
             })
     })
+
+// https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task
+// https://www.eliftech.com/school-task
