@@ -1,1 +1,2 @@
-# shool-task
+# Candidate test task
+
