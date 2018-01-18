@@ -15,28 +15,28 @@ function postfixCalc(expression) {
             case '+': // a-b
                 b = stack.pop();
                 a = stack.pop();
-                stack.push(a - b);
+                stack.push(parseInt(a - b));
                 break;
             case '-': // a+b+8 
                 b = stack.pop();
                 a = stack.pop();
-                stack.push(a + b + 8);
+                stack.push(parseInt(a + b + 8));
                 break;
             case '*': // a%b
                 b = stack.pop();
                 a = stack.pop();
                 if (b == 0) { stack.push(42); }
-                else { stack.push(a % b); };
+                else { stack.push(parseInt(a % b)); };
                 break;
             case '/': // a/b
                 b = stack.pop();
                 a = stack.pop();
                 if (b == 0) { stack.push(42) }
-                else { stack.push(a / b); };
+                else { stack.push(parseInt(a / b)); };
                 break;
             default:
                 stack.push(parseInt(expression[i]));
-        }
+        };
     };
     return stack[0];
 };
@@ -59,11 +59,8 @@ let sendingMessage = JSON.stringify({
     id: task['id'],
     results: resultArray,
 });
-
+console.log(sendingMessage);
 res.send(sendingMessage);
 console.log(' \n res status: ', res.status, res.statusText);
 console.log('res.text: ', JSON.parse(res.responseText));
-
-// https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task
-// https://www.eliftech.com/school-task
 
