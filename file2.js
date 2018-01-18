@@ -29,7 +29,7 @@ function postfixCalc(expression) {
                 b = stack.pop();
                 a = stack.pop();
                 if (b == 0) { stack.push(42) }
-                else if (a < 0 || b < 0) { stack.push(parseInt(-1 * (a % b))) }
+//                 else if (a < 0 || b < 0) { stack.push(parseInt(-1 * (a % b))) }
                 else { stack.push(parseInt(a % b)) };
                 break;
             case '/': // a/b
@@ -69,5 +69,3 @@ fetch('https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task')
             })
     })
 
-// https://u0byf5fk31.execute-api.eu-west-1.amazonaws.com/etschool/task
-// https://www.eliftech.com/school-task
